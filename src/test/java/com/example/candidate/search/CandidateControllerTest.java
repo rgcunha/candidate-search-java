@@ -15,14 +15,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GreetingControllerTest {
+public class CandidateControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
-	public void testDefaultGreeting() throws Exception {
-		MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/greeting").accept(MediaType.APPLICATION_JSON))
+	public void testCreateCandidate() throws Exception {
+		MvcResult result = mvc.perform(MockMvcRequestBuilders.post("/candidates").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -31,7 +31,7 @@ public class GreetingControllerTest {
     }
     
 	@Test
-	public void testCustomGreeting() throws Exception {
+	public void testGetBestCandidate() throws Exception {
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/greeting?name=Max").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
