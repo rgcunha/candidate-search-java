@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CandidateSearchService {
+    private CandidateRepository candidateRepository;
+
     @Autowired
-     private CandidateRepository candidateRepository;
+    public CandidateSearchService(CandidateRepository candidateRepository) {
+        this.candidateRepository = candidateRepository;
+    }
 
     private Integer compareCandidates(Candidate candidate1, Candidate candidate2, Set<String> skills) {
         Set<String> candidate1Skills = getMatchedSkills(candidate1, skills);
@@ -29,7 +33,7 @@ public class CandidateSearchService {
     
     private Boolean isValidCandidate(Candidate candidate, Set<String> skills) {
         Set<String> matchedSkills = getMatchedSkills(candidate, skills);
-        return matchedSkills.size() > 0 ? true : false;
+        return matchedSkills.size() > 0;
     }
     
     public Candidate getBestCandidate(Set<String> skills) {

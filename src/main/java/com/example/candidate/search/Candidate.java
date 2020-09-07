@@ -26,4 +26,8 @@ public class Candidate {
   public void setSkills(Set<String> skills) {
     this.skills = skills;
   }
+
+  public String getId() {
+    return id;
+  }
 }
